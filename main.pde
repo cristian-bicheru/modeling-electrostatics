@@ -220,7 +220,7 @@ void calculateNetMagneticField(float x1, float x2, float y1, float y2, float z1,
         for (int i = 0; i < wires.length; i++) {
           wireCoords = wires[i].getCoords();
           len = wireCoords.length;
-          if (len > 4) {
+          if (len > 4) { // broken, calculateLines has the correct code for this
             for (int j = 0; j < (len-(len % 4)); j += 4) {
               tVector = integrateCatmullRomSpline(wireCoords[j][0]*scaleFactor, wireCoords[j][1]*scaleFactor, wireCoords[j][2]*scaleFactor, wireCoords[j+1][0]*scaleFactor, wireCoords[j+1][1]*scaleFactor, wireCoords[j+1][2]*scaleFactor, wireCoords[j+2][0]*scaleFactor, wireCoords[j+2][1]*scaleFactor, wireCoords[j+2][2]*scaleFactor, wireCoords[j+3][0]*scaleFactor, wireCoords[j+3][1]*scaleFactor, wireCoords[j+3][2]*scaleFactor, sx, sy, sz);
               tVector.mult(wires[i].getCurrent()/(4*PI));
